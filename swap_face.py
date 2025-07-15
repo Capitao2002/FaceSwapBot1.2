@@ -14,14 +14,12 @@ def process_video(video_path, face_path, output_path):
         "--execution-providers", "cpu"
     ]
 
-    logger.info("🔧 Executando facefusion: %s", " ".join(command))
+    logger.info("🔧 Comando facefusion será executado:\n%s", " ".join(command))
 
     try:
         result = subprocess.run(command, check=True, capture_output=True, text=True)
-        logger.info("✅ STDOUT:
-%s", result.stdout)
-        logger.info("✅ STDERR:
-%s", result.stderr)
+        logger.info("✅ STDOUT:\n%s", result.stdout)
+        logger.info("✅ STDERR:\n%s", result.stderr)
 
         if not os.path.exists(output_path):
             logger.error("❌ O vídeo de saída não foi gerado: %s", output_path)
